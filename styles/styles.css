@@ -1,0 +1,326 @@
+
+* { /* käytetään koko sivulla border-boxia ja marginit nollaan että marginaalit, välistykset ja vastaavat sotke määrityksiä */
+    box-sizing: border-box;
+    margin: 0;
+}
+html { /* takaisin ylös napin vieritys sulavaksi */
+    scroll-behavior: smooth;
+  }
+body { /* määritetään bodylle taustakuva ja käytetään sivuston maksimileveytenä 1920 pikseliä, jos joku selaa isommalla resoluutiolla niin sivusto keskittyy välilehden keskelle */
+    background-color: #58e9f1;
+    background-image: url('../images/kori.jpg');
+    background-size: 1920px auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-family: Muli, sans-serif;
+    font-size: 100%;
+    background-attachment: fixed;
+    max-width: 1920px;
+    margin: 0 auto;
+}
+i { /* font awesome ikoni löytyy footerista sähköpostin vierestä, tehdään hieman tilaa ikonin ja sähköpostiosoitteen väliin ja käytetän tehosteväriä ikonissa */
+    margin-right: 1em;
+    color: #E6A070;
+}
+.header {
+    grid-area: header;
+    background-color:#272d2dec;
+}
+.nav { /* navigointipalkin tyylimääritys*/
+    grid-area: nav;
+    background-color:#272d2dec;
+    text-align: left;
+    text-shadow: 1px 2px rgba(0, 0, 0, 0.514);
+    color: #ECE8EF;
+    font-family: "Space Mono", monospace;
+}
+.article { /* tekstilaatikon tyylimääritys, riviväliä ja kirjainten väliä kasvatettu helppolukuisemmaksi ja laatikoille pieni varjostus */
+    background-color:#272d2dec;
+    border-radius: 15px;
+    margin: 3em;
+    padding: 2em;
+    align-self: center;
+    color: #ECE8EF;
+    letter-spacing: 0.1em;
+    line-height: 1.8em;
+    font-size: 1.1em;
+    box-shadow: 0px 0px 5px #000000be;
+}
+.figure { /* kuvien marginaali ja keskitys gridin keskelle */
+    margin: 3em;
+    align-self: center;
+    justify-self: center;
+}
+img { /*kuvien koko yhteinäiseksi ja tyyli samanlaiseksi kuin tekstiosiolla */
+    width: 350px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px #000000be;
+} /* nimetään luokat gridiä varten*/
+.grid1 {grid-area: grid1;}
+.grid3 {grid-area: grid3;}
+.grid2 {grid-area: grid2;}
+.grid4 {grid-area: grid4;}
+.grid5 {grid-area: grid5;}
+.grid6 {grid-area: grid6;}
+.footer { /*footerin kokomääritys ja laitetaan pysymään aina sivun pohjassa */
+    height: 6em;
+    grid-area: footer;
+    background-color:#272d2dec;
+    text-align: center;
+    font-size: 1em;
+    line-height: 3em;
+    color: #ECE8EF;
+    position: sticky;
+    top: 100%;
+    margin-top: 3em;
+    box-shadow: 0px 0px 15px #000000be;
+} /* määritetään gridin rivit, sarakkeet ja niiden koko. korkeus aina vähintään 100vh että footer pysyisi pohjalle, ei kuitenkaan tee nyt juuri mitään koska sivut ovat joka tapauksessa pidempiä. jätetään näin jos tulee lisättyä sivuja myöhemmin */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    "header nav nav nav nav"
+    "grid2 grid2 grid1 grid1 grid1"
+    "grid3 grid3 grid3 grid4 grid4"
+    "grid5 grid5 grid6 grid6 grid6"
+    "footer footer footer footer footer";
+    grid-template-rows: 5em auto auto auto 3em;
+    grid-template-columns: auto auto auto auto auto;
+    height: 100vh;
+} /* portfoliosivulle määritetään oma ruudukko koska siellä on timeline joka ei ole gridi */
+.grid-container-portfolio {
+    display: grid;
+    grid-template-areas:
+    "header nav nav nav nav"
+    "grid2 grid2 grid1 grid1 grid1";
+    grid-template-rows: 5em auto auto;
+    grid-template-columns: auto auto auto auto auto;
+}
+li { /* lista yhdelle riville*/
+    display: inline;
+    padding: 0;
+}
+ul { /* poistetaan listan bulletit ja tehdään tyylimäärittelyt*/
+    list-style-type: none;
+    line-height: 3.2em;
+    font-size: 1.6em;
+    text-align: center;
+}
+h1 { /* headerin "logo" */
+    color: #E6A070;
+    padding-left: 0.5em;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.5em;
+    padding-top: 0.2em;
+
+}
+h2 {
+    font-family: "Space Mono", monospace;
+    padding-bottom: 1em;
+}
+.practice { /* "logon" slogan */
+    font-size: 1.5em;
+    color: #E6A070ad;
+    padding-left: 1em;
+    font-family: 'Special Elite', cursive;
+}
+a:link { /* nav barin fontti ja poistetaan alleviivaus */
+    color: #ECE8EF;
+    text-decoration: none;
+}
+a:visited { /* halutaan että navbarin linkki ei vaihda väriä jos sivulla on jo käyty */
+    color: #ECE8EF;
+}/* 'takaisin ylös' nappi ja navbarin korostus kun asetetaan hiiri päälle */
+.takaisin a:hover,li a:hover {
+    text-shadow: 1px 1px 5px #E6A070;
+} /* klikkaukselle hieman enemmän korostusta linkkiin */
+.takaisin a:active,li a:active {
+    text-shadow: 4px 4px 15px #E6A070;
+}
+.aktiivinen { /* alleviivataan nav barista aktiivinen sivu */
+    border-bottom: 2px solid #E6A070;
+}
+a:link.linkki { /* artikkeleissa esiintyviin linkkeihin eri määritys kuin naviin */
+    color: #e69f70;
+}
+a:visited.linkki { /* artikkeleissa esiintyviin linkkeihin eri määritys kuin naviin */
+    color: #865d41;
+}
+
+/* TIMELINE ALKAA, W3SCHOOLSIN HOW TO OSIOSTA OTETTU JA MUOKATTU OMAAN SIVUUN SOPIVAKSI */
+
+/* The actual timeline (the vertical ruler) */
+.timeline { /* maksimileveys muutettu sivuston kanssa samaksi*/
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after { /* värit muutettu */
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #272d2dec;;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after { /* värit muutettu */
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: #272d2d;;
+  border: 4px solid #E6A070;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before { /* värit muutettu */
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid #272d2dec;;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #272d2dec;;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before { /* värit muutettu */
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid #272d2dec;;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #272d2dec transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content { /* fontin väri, koko ja laatikon varjo muutettu sivustoon sopivaksi */
+  padding: 20px 30px;
+  background-color: #272d2dec;
+  position: relative;
+  border-radius: 15px;
+  color: #ECE8EF;;
+  box-shadow: 0px 0px 5px #000000be;
+  font-size: 1.1em;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 840px) { /* siirrytään yhteen palstaan, muutettu leveys alkuperäisestä suuremmaksi */
+  /* Place the timelime to the left */
+  .timeline::after {
+  left: 31px;
+  }
+  
+  /* Full-width containers */
+  .container {
+  width: 100%;
+  padding-left: 70px;
+  padding-right: 25px;
+  }
+  
+  /* Make sure that all arrows are pointing leftwards */
+  .container::before {
+  left: 60px;
+  border: medium solid #272d2dec;;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #272d2dec transparent transparent;
+  }
+
+  /* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+  left: 15px;
+  }
+  
+  /* Make all right containers behave like the left ones */
+  .right {
+  left: 0%;
+  }
+}
+@media only screen and (max-width: 950px) { /* 950 resoluutiosta alaspäin pienennetään hieman marginaaleja ja pienennetään kuvaa että saadaan mahtumaan pienemmälle näytölle */
+    .grid-container,.grid-container-portfolio {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto auto auto;
+        grid-template-areas:
+        "header header"
+        "nav nav"
+        "grid2 grid1"
+        "grid3 grid4"
+        "grid5 grid6"
+        "footer footer"
+    }
+    .figure, .article {
+        margin: 0.5em;
+    }
+    img {
+        width: 290px;
+    }
+}
+@media only screen and (max-width: 750px) { /* 750 pikselistä alaspäin luovutaan 2 palstan käytöstä ja sivu siirtyy yhteen pitkään palstaan ja keskittyy. kuvat suurenevat jälleen koska 1 palstan leveys riittää siihen */
+    .grid-container,.grid-container-portfolio {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto auto auto auto auto;
+        grid-template-areas: 
+        "header"
+        "nav"
+        "grid2"
+        "grid1"
+        "grid4"
+        "grid3"
+        "grid5"
+        "grid6"
+        "footer";       
+    }
+    .figure {
+        justify-self: center;
+        margin: 1em;
+    }
+    .article {
+        margin: 1em;
+        justify-self: center;
+    }
+    img {
+        width: 350px;
+    }
+}
